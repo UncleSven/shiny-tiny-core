@@ -1,0 +1,21 @@
+div#content_exception_http {
+    position: absolute;
+    top: 0;
+    z-index: -1;
+
+    height: 100vh;
+    width: 100vw;
+
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    color: #d2d6c4;
+    font-family: "Lucida Sans", "Trebuchet MS", sans-serif;
+}
+
+div#content_exception_http h1 {
+    font-size: 300%;
+    font-weight: bold;
+    text-align: center;
+}

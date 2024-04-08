@@ -1,0 +1,43 @@
+div#content_exception * {
+    color: #686966;
+    font-family: "Lucida Sans", "Trebuchet MS", sans-serif;
+    line-height: 140%;
+}
+
+div#content_exception div.container:nth-child(1) {
+    padding-top: 80px;
+}
+
+div#content_exception div#exception_stack_trace div:nth-child(odd) {
+    background-color: #fcfcf9;
+}
+
+div#content_exception div#exception_stack_trace td:nth-child(2) {
+    text-align: right;
+}
+
+div#content_exception h1,
+div#content_exception h2 {
+    color: #d2d6c4;
+    font-weight: bold;
+}
+
+div#content_exception h1 {
+    font-size: 200%;
+}
+
+div#content_exception h2 {
+    font-size: 160%;
+}
+
+div#content_exception strong {
+    font-weight: bold;
+}
+
+div#content_exception td {
+    padding: 4px 6px 4px 6px;
+}
+
+div#content_exception td:nth-child(1) {
+    text-align: right;
+}

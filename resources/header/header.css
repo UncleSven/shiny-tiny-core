@@ -1,0 +1,25 @@
+div#header {
+    background-color: #fcfcf9;
+    border-bottom: 1px solid #b6bba6;
+
+    color: #d2d6c4;
+    font-family: "Lucida Sans", "Trebuchet MS", sans-serif;
+
+    display: flex;
+    justify-content: center;
+}
+
+div#header a {
+    color: #b6bba6;
+}
+
+div#header a:hover {
+    text-decoration: none;
+}
+
+div#header strong {
+    font-size: 120%;
+    font-weight: bold;
+
+    padding: 20px;
+}
