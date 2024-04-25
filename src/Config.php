@@ -13,6 +13,6 @@ final class Config extends AbstractCollection
 
     public function set(string $key, bool|float|int|string $value): void
     {
-        $this->variables[$key] = $value;
+        $this->variables[$key] ??= $value;
     }
 }
