@@ -10,6 +10,6 @@ class Controller
 
     public function __construct()
     {
-        $this->resources = config()->getString(key: 'resources_path', default: '');
+        $this->resources = config()->getString(key: 'shiny_tiny_resources_path', default: '');
     }
 }

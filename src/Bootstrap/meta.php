@@ -25,6 +25,10 @@ if (!function_exists(function: 'container')) {
     function container(): Container { return App::container(); }
 }
 
+if (!function_exists(function: 'corePath')) {
+    function corePath(): string { return App::corePath(); }
+}
+
 if (!function_exists(function: 'environment')) {
     function environment(): Environment { return App::environment(); }
 }

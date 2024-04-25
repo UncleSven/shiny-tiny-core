@@ -12,9 +12,13 @@ final class App
 {
     private static self $instance;
 
+    public readonly string $basePath;
+
     public readonly Config $config;
 
     public readonly Container $container;
+
+    public readonly string $corePath;
 
     public readonly Environment $environment;
 
@@ -30,7 +34,7 @@ final class App
      * @throws ShinyTinyException
      * @throws ShinyTinyReflectionException
      */
-    public function __construct(public readonly string $basePath)
+    public function __construct(string $basePath)
     {
         self::$instance = $this;
 
@@ -39,8 +43,10 @@ final class App
         $this->appRuntime       = $appContainer->loadTypeSafe(class: AppRuntime::class);
         $this->exceptionHandler = $appContainer->loadTypeSafe(class: ExceptionHandler::class);
 
+        $this->basePath    = $basePath;
         $this->config      = $appContainer->loadTypeSafe(class: Config::class);
         $this->container   = $appContainer->loadTypeSafe(class: Container::class);
+        $this->corePath    = dirname(path: __DIR__, levels: 2);
         $this->environment = $appContainer->loadTypeSafe(class: Environment::class);
         $this->request     = $appContainer->loadTypeSafe(class: Request::class);
         $this->router      = $appContainer->loadTypeSafe(class: Router::class);
@@ -65,6 +71,11 @@ final class App
     public static function container(): Container
     {
         return self::$instance->container;
+    }
+
+    public static function corePath(): string
+    {
+        return self::$instance->corePath;
     }
 
     public static function environment(): Environment
