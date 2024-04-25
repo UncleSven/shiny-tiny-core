@@ -37,7 +37,7 @@ class ExceptionHandler implements ExceptionHandlerInterface
         }
 
         if ($code === HttpStatusCode::INTERNAL_SERVER_ERROR
-            && $this->environment->getBool(key: 'APP_DEBUG', default: false)) {
+            && !$this->environment->getBool(key: 'APP_DEBUG', default: false)) {
             [$code, $data, $view] = $this->createNoDebugException();
         }
 
