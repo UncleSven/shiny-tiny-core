@@ -55,10 +55,10 @@ class ExceptionHandler implements ExceptionHandlerInterface
     {
         $code = HttpStatusCode::INTERNAL_SERVER_ERROR;
         $data = $this->throwableToArray(throwable: $throwable) ?? [];
-        $view = $this->config->getString(
-            key    : 'exception_view_path',
-            default: $this->config->getString(key: 'shiny_tiny_exception_view_path', default: ''),
-        );
+        $view = $this->config->getString(key: 'exception_view_path', default: '');
+        if (!is_file(filename: $view)) {
+            $view = $this->config->getString(key: 'shiny_tiny_exception_view_path', default: '');
+        }
 
         return [$code, $data, $view];
     }
@@ -70,10 +70,10 @@ class ExceptionHandler implements ExceptionHandlerInterface
     {
         $code = HttpStatusCode::tryFrom(value: $exception->getCode()) ?? HttpStatusCode::INTERNAL_SERVER_ERROR;
         $data = ['code' => $code->value, 'message' => $exception->getMessage()];
-        $view = $this->config->getString(
-            key    : 'exception_view_path_http',
-            default: $this->config->getString(key: 'shiny_tiny_exception_view_path_http', default: ''),
-        );
+        $view = $this->config->getString(key: 'exception_view_path_http', default: '');
+        if (!is_file(filename: $view)) {
+            $view = $this->config->getString(key: 'shiny_tiny_exception_view_path_http', default: '');
+        }
 
         return [$code, $data, $view];
     }
@@ -85,10 +85,10 @@ class ExceptionHandler implements ExceptionHandlerInterface
     {
         $code = HttpStatusCode::INTERNAL_SERVER_ERROR;
         $data = ['code' => $code->value, 'message' => HttpStatus::CODE_500->value];
-        $view = $this->config->getString(
-            key    : 'exception_view_path_http',
-            default: $this->config->getString(key: 'shiny_tiny_exception_view_path_http', default: ''),
-        );
+        $view = $this->config->getString(key: 'exception_view_path_http', default: '');
+        if (!is_file(filename: $view)) {
+            $view = $this->config->getString(key: 'shiny_tiny_exception_view_path_http', default: '');
+        }
 
         return [$code, $data, $view];
     }
