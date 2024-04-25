@@ -30,7 +30,7 @@ final class App
      * @throws ShinyTinyException
      * @throws ShinyTinyReflectionException
      */
-    public function __construct()
+    public function __construct(public readonly string $basePath)
     {
         self::$instance = $this;
 
@@ -50,6 +50,11 @@ final class App
         $this->container->bind(abstract: Environment::class, concrete: fn() => $this->environment);
         $this->container->bind(abstract: Request::class, concrete: fn() => $this->request);
         $this->container->bind(abstract: Router::class, concrete: fn() => $this->router);
+    }
+
+    public static function basePath(): string
+    {
+        return self::$instance->basePath;
     }
 
     public static function config(): Config

@@ -7,20 +7,9 @@ use ShinyTinyCore\AppRuntime;
 $container = new \ShinyTinyCore\Container();
 
 $container->bind(\ShinyTinyCore\AppRuntime::class, AppRuntime::class);
-$container->bind(\ShinyTinyCore\Config::class, static fn() => new \ShinyTinyCore\Config(require 'config.php'));
+$container->bind(\ShinyTinyCore\Config::class, \ShinyTinyCore\Config::class);
 $container->bind(\ShinyTinyCore\Container::class, \ShinyTinyCore\Container::class);
-$container->bind(
-    \ShinyTinyCore\Environment::class,
-    static function (): \ShinyTinyCore\Environment {
-        $variables = [];
-        $filename  = dirname(__DIR__, 5) . '/.env';
-        if (is_file($filename)) {
-            $variables = \M1\Env\Parser::parse(file_get_contents($filename) ?: '');
-        }
-
-        return new \ShinyTinyCore\Environment($variables);
-    },
-);
+$container->bind(\ShinyTinyCore\Environment::class, \ShinyTinyCore\Environment::class);
 $container->bind(\ShinyTinyCore\ExceptionHandler::class, \ShinyTinyCore\Exception\ExceptionHandler::class);
 $container->bind(
     \ShinyTinyCore\HttpCacheHandler::class,

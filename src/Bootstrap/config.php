@@ -2,14 +2,14 @@
 
 declare(strict_types = 1);
 
-$dirnameCore      = dirname(path: __DIR__, levels: 2);
-$dirnameFramework = dirname(path: __DIR__, levels: 5);
+$dirnameCore = dirname(path: __DIR__, levels: 2);
 
 /**
  * @return array<string, scalar>
  */
 return [
-    'shiny_tiny_cache_path'               => $dirnameFramework . '/storage/framework/httpCache',
+    'resources_path'                      => basePath() . '/resources',
+    'shiny_tiny_cache_path'               => basePath() . '/storage/framework/httpCache',
     'shiny_tiny_core_name'                => 'Shiny-Tiny (Core)',
     'shiny_tiny_core_url'                 => 'https://github.com/UncleSven/shiny-tiny-core',
     'shiny_tiny_core_version'             => '1.0.0',

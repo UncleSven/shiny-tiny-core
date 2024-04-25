@@ -9,7 +9,13 @@ use ShinyTinyCore\Environment;
 use ShinyTinyCore\Request;
 use ShinyTinyCore\Router;
 
-// App functionality
+/**
+ * App functionality
+ */
+
+if (!function_exists(function: 'basePath')) {
+    function basePath(): string { return App::basePath(); }
+}
 
 if (!function_exists(function: 'config')) {
     function config(): Config { return App::config(); }
@@ -31,7 +37,9 @@ if (!function_exists(function: 'router')) {
     function router(): Router { return App::router(); }
 }
 
-// Helpers
+/**
+ * Helpers
+ */
 
 if (!function_exists(function: 'conf')) {
     function conf(string $key, bool|float|int|string|null $default = null): bool|float|int|string|null
