@@ -37,16 +37,16 @@ final class App
     public function __construct(string $basePath)
     {
         self::$instance = $this;
+        $this->basePath = $basePath;
+        $this->corePath = dirname(path: __DIR__);
 
         $appContainer = require __DIR__ . '/Bootstrap/container.php';
 
         $this->appRuntime       = $appContainer->loadTypeSafe(class: AppRuntime::class);
         $this->exceptionHandler = $appContainer->loadTypeSafe(class: ExceptionHandler::class);
 
-        $this->basePath    = $basePath;
         $this->config      = $appContainer->loadTypeSafe(class: Config::class);
         $this->container   = $appContainer->loadTypeSafe(class: Container::class);
-        $this->corePath    = dirname(path: __DIR__, levels: 2);
         $this->environment = $appContainer->loadTypeSafe(class: Environment::class);
         $this->request     = $appContainer->loadTypeSafe(class: Request::class);
         $this->router      = $appContainer->loadTypeSafe(class: Router::class);
@@ -58,40 +58,19 @@ final class App
         $this->container->bind(abstract: Router::class, concrete: fn() => $this->router);
     }
 
-    public static function basePath(): string
-    {
-        return self::$instance->basePath;
-    }
+    public static function basePath(): string { return self::$instance->basePath; }
 
-    public static function config(): Config
-    {
-        return self::$instance->config;
-    }
+    public static function config(): Config { return self::$instance->config; }
 
-    public static function container(): Container
-    {
-        return self::$instance->container;
-    }
+    public static function container(): Container { return self::$instance->container; }
 
-    public static function corePath(): string
-    {
-        return self::$instance->corePath;
-    }
+    public static function corePath(): string { return self::$instance->corePath; }
 
-    public static function environment(): Environment
-    {
-        return self::$instance->environment;
-    }
+    public static function environment(): Environment { return self::$instance->environment; }
 
-    public static function request(): Request
-    {
-        return self::$instance->request;
-    }
+    public static function request(): Request { return self::$instance->request; }
 
-    public static function router(): Router
-    {
-        return self::$instance->router;
-    }
+    public static function router(): Router { return self::$instance->router; }
 
     public function run(): HttpResponse
     {

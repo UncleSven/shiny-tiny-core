@@ -4,7 +4,6 @@ declare(strict_types = 1);
 
 use ShinyTinyCore\Shine\Shine;
 
-// This stuff is required by the following sections within this file
 Shine::setDefaultSection(
     name   : 'main.title',
     content: config()->getString(key: 'shiny_tiny_framework_name', default: 'Shiny-Tiny Framework'),
